@@ -1,0 +1,28 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Realtime chat app with rooms",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./lib/server.js",
+    "dev": "ts-node-dev src/server.ts",
+    "build": "esbuild esbuild.config.js"
+  },
+  "author": "Sarah Hsieh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "esbuild": "^0.14.42",
+    "express": "^4.18.1",
+    "moment": "^2.29.3",
+    "mongoose": "^6.3.5",
+    "socket.io": "^4.5.1",
+    "socket.io-client": "^4.5.1",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "ts-node-dev": "^2.0.0"
+  }
+}
