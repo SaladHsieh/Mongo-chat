@@ -9,7 +9,7 @@ import {
   userLeave,
   getRoomUsers,
 } from './utils/users';
-import './utils/mongoose';
+// import './utils/mongoose';
 require('dotenv').config();
 
 const app = express();
@@ -33,13 +33,16 @@ io.on('connection', (socket: any) => {
       socket.join(user.room);
 
       // Emit to the single client
-      socket.emit('message', formatMessage(username, 'Welcome to Chatroom!'));
+      socket.emit(
+        'robot_message',
+        formatMessage(username, 'Welcome to Chatroom!')
+      );
 
       // Broadcast emit to everybody except the client
       socket.broadcast
         .to(user.room)
         .emit(
-          'message',
+          'robot_message',
           formatMessage(username, `${username} has joined the chat`)
         );
 
@@ -66,7 +69,7 @@ io.on('connection', (socket: any) => {
     if (user) {
       // Emit to all the clients
       io.to(user.room).emit(
-        'message',
+        'robot_message',
         formatMessage(user.username, `${user.username} has left the chat`)
       );
 

@@ -21,6 +21,14 @@ socket.on('roomUsers', ({ room, users }) => {
 });
 
 // Listen for message from Server
+socket.on('robot_message', (message) => {
+  outputRobotMessage(message);
+
+  // Scroll down
+  chatMessage.scrollTop = chatMessage.scrollHeight;
+});
+
+// Listen for message from Server
 socket.on('message', (message) => {
   outputMessage(message);
 
@@ -42,6 +50,15 @@ chatForm.addEventListener('submit', (e) => {
   e.target.elements.msg.value = '';
   e.target.elements.msg.focus();
 });
+
+// Output robot message to DOM
+function outputRobotMessage(message) {
+  const div = document.createElement('div');
+  div.classList.add('robotMessage');
+  div.innerHTML = `
+  <p class="meta">${message.text} ${message.time}`;
+  document.querySelector('.chat-messages').appendChild(div);
+}
 
 // Output message to DOM
 function outputMessage(message) {
