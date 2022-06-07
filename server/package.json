@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./lib/server.js",
     "dev": "ts-node-dev src/server.ts",
-    "build": "esbuild esbuild.config.js"
+    "build": "node esbuild.config.js"
   },
   "author": "Sarah Hsieh",
   "license": "ISC",

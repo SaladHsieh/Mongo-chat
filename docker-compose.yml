@@ -17,6 +17,6 @@ services:
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
     volumes:
-      - ./server:/app # bind volume
+      - ./server:/app/code # bind mount volume to folder inside of /app/code
     # depends_on:
     # - mongodb

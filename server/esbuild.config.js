@@ -1,13 +1,10 @@
 require('esbuild')
   .build({
     entryPoints: ['src/server.ts'],
-    // bundle: true,
+    bundle: true,
     minify: true,
-    // tsconfig: 'tsconfig.json',
-    outfile: 'server.js',
-    outdir: './app/lib/',
+    platform: 'node',
+    tsconfig: 'tsconfig.json',
+    outdir: 'lib',
   })
-  .catch((e) => {
-    console.log(e);
-    process.exit(1);
-  });
+  .catch(() => process.exit(1));
