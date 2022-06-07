@@ -16,7 +16,7 @@ services:
       - ./.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
-    volumes:
-      - ./server:/app/code # bind mount volume to folder inside of /app/code
+    # volumes:
+    #   - ./server:/app # bind mount volume for development
     # depends_on:
     # - mongodb
