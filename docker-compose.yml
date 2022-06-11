@@ -16,7 +16,13 @@ services:
       - ./.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
-    # volumes:
-    #   - ./server:/app # bind mount volume for development
+    volumes:
+      - ./server:/app # bind mount volume for development
     # depends_on:
     # - mongodb
+
+  nginx:
+    build: ./nginx
+    hostname: nginx
+    ports:
+      - '80:80'
