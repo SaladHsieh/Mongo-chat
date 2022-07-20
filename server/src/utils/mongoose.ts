@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
-const mongooseConnection = mongoose.connection;
-const host: string = process.env.DB_HOST!;
-const port: string = process.env.DB_PORT!;
-const database: string = process.env.DB_DATABASE!;
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, './../../../.env') });
 
-mongooseConnection.on('error', (error) => {
-  console.error('MongoDB connection error: \n', error);
-});
+// mongoDB connection
+const DB = process.env.DATABASE!.replace(
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD!
+);
 
-mongooseConnection.on('open', () => console.log('Connected to MongoDB!!'));
-
-mongoose.connect(`mongodb://${host}:${port}/${database}`);
+mongoose
+  .connect(DB)
+  .then(() => console.log('DB connection successful!'))
+  .catch((e) => console.log('MongoDB connection error: \n', e));
