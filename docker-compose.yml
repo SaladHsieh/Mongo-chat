@@ -16,6 +16,7 @@ services:
       - ./.env
     ports:
       - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+      - $MONGODB_LOCAL_PORT:$MONGODB_DOCKER_PORT
     volumes:
       - ./server:/app # bind mount volume for development
       - /app/node_modules # anonymous volume

@@ -1,6 +1,6 @@
 require('esbuild')
   .build({
-    entryPoints: ['src/server.ts'],
+    entryPoints: ['./src/server.ts'],
     bundle: true,
     minify: true,
     platform: 'node',
